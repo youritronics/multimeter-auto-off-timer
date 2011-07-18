@@ -22,23 +22,19 @@
 #include <avr/sleep.h>
 
 /* define the prescaler used during setup of timer0 */
-#define prescaler 1024
+#define PRESCALER 1024 
 
 /* define here the delay time you want in seconds */
-#define seconds 120
+#define SECONDS 5
 
-/* this is the time it takes for Timer0 to increment @ 8MHz with 1024 prescale 
-** (1/(F_CPU/prescaler)) = 0.000128 
-** Timer0 is an 8bit timer so 256 increments are needed for an overflow. 
-** (256/(F_CPU/prescaler)) = 0.032768 */
-#define timer_overfl 0.032768
+/* Overflows per second */
+#define TIMER_OVERFL  (F_CPU/PRESCALER/256)
 
 /* setpoint is calculated as the time in seconds 
-** divided by the time it takes for Timer0 to overflow
+** multiplied by the time it takes for Timer0 to overflow
 ** note: counter is a 32bit variable so the maximum delay
 ** in seconds is  4294967295/0.032768 = 131071999969.4 seconds
 ** thats about 4156 years :) */
-//#define setpoint  (seconds/timer_overfl)
-volatile uint32_t setpoint = (seconds/timer_overfl);
+volatile uint32_t setpoint = SECONDS * TIMER_OVERFL;
 
 #endif //_MAIN_H
