@@ -25,10 +25,10 @@
 #define PRESCALER 1024 
 
 /* define here the delay time you want in seconds */
-#define SECONDS 5
+#define SECONDS 60
 
 /* Overflows per second */
-#define TIMER_OVERFL  (F_CPU/PRESCALER/256)
+#define TIMER_OVERFL  (F_CPU/PRESCALER/256.0)
 
 /* setpoint is calculated as the time in seconds 
 ** multiplied by the time it takes for Timer0 to overflow
