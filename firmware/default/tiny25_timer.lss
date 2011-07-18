@@ -109,10 +109,10 @@ GIMSK |= (1 << INT0);
   5e:	80 64       	ori	r24, 0x40	; 64
   60:	8b bf       	out	0x3b, r24	; 59
 
-// Select Timer0 clock prescaler 1024
-TCCR0B |= (1 << CS00) | (1 << CS02);
+// Select Timer0 clock prescaler 0 (no prescale for better acuracy)
+TCCR0B |= (1 << CS00);
   62:	83 b7       	in	r24, 0x33	; 51
-  64:	85 60       	ori	r24, 0x05	; 5
+  64:	81 60       	ori	r24, 0x01	; 1
   66:	83 bf       	out	0x33, r24	; 51
 
 // Enable Timer0 overflow interrupt

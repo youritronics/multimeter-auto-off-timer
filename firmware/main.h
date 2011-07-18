@@ -22,13 +22,13 @@
 #include <avr/sleep.h>
 
 /* define the prescaler used during setup of timer0 */
-#define PRESCALER 1024 
+#define PRESCALER 0
 
 /* define here the delay time you want in seconds */
-#define SECONDS 60
+#define SECONDS 600
 
 /* Overflows per second */
-#define TIMER_OVERFL  (F_CPU/PRESCALER/256.0)
+#define TIMER_OVERFL  (F_CPU/256.0)
 
 /* setpoint is calculated as the time in seconds 
 ** multiplied by the time it takes for Timer0 to overflow

@@ -27,8 +27,8 @@ MCUCR |= (0 << ISC00) | (0 << ISC01);
 // Enable INT0 pin change 
 GIMSK |= (1 << INT0);
 
-// Select Timer0 clock prescaler 1024
-TCCR0B |= (1 << CS00) | (1 << CS02);
+// Select Timer0 clock prescaler 0 (no prescale for better acuracy)
+TCCR0B |= (1 << CS00);
 
 // Enable Timer0 overflow interrupt
 TIMSK |= (1 << TOIE0);
